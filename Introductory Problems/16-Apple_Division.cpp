@@ -37,3 +37,30 @@ int main() {
     subsetSum(0, 0);
     cout << ans;
 }
+
+
+// method - 1
+#include<bits/stdc++.h>
+using namespace std;
+ 
+int main(){
+    int n;
+    cin >> n;
+    long long ans = INT_MAX;
+    int arr[n];
+    for(int i=0; i<n; i++) cin >> arr[i];
+    int x = pow(2,n);
+    for(int i=0; i<x; i++){
+        long long gr1 = 0, gr2 = 0;
+        for(int j=0; j<n; j++){
+            if(i & (1 << j)){
+                gr1 += arr[j];
+            }
+            else{
+                gr2 += arr[j];
+            }
+        }
+        ans = min(ans , abs(gr1-gr2));
+    }
+    cout << ans ;
+}
